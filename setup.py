@@ -1,4 +1,18 @@
+#!env python
+
 from distutils.core import setup
+from setuptools.command.test import test as TestCommand
+
+class PyTest(TestCommand):
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = []
+        self.test_suite = True
+
+    def run_tests(self):
+        import pytest, sys
+        errno = pytest.main(self.test_args)
+        raise sys.exit(errno)
 
 setup(
     name='Wraptor',
@@ -10,4 +24,6 @@ setup(
     license='LICENSE.txt',
     description='Useful decorators and other utility functions.',
     long_description=open('README.rst').read(),
+    tests_require=['pytest'],
+    cmdclass = { 'test': PyTest },
 )
