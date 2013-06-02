@@ -1,10 +1,16 @@
 ===========
 Wraptor
 ===========
-.. image:: https://travis-ci.org/carlsverre/wraptor.png
-    target: https://travis-ci.org/carlsverre/wraptor
 
 .. image:: https://github.com/carlsverre/wraptor/raw/master/docs/images/raptor.jpg
+
+Testing
+=======
+
+.. image:: https://travis-ci.org/carlsverre/wraptor.png
+    :target: https://travis-ci.org/carlsverre/wraptor
+
+Run tests by executing :code:`python setup.py test`.
 
 Decorators
 ==========
