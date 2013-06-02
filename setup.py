@@ -28,6 +28,6 @@ setup(
     license='LICENSE.txt',
     description='Useful decorators and other utility functions.',
     long_description=open('README.rst').read(),
-    tests_require=['pytest', 'mock'],
+    tests_require=['pytest'],
     cmdclass = { 'test': PyTest },
 )

@@ -1,5 +1,3 @@
-import pytest
-import mock
 import time
 
 from wraptor.decorators import memoize
@@ -81,3 +79,13 @@ def test_manual_flush():
     time.sleep(.2)
     fn.flush_cache()
     assert len(memoize_inst.cache.keys()) == 0
+
+def test_called_with_args():
+    test_args = [1,2,[1,2,3],{'asdf':5}]
+    test_kwargs = {'a': 1, 'b': [1,2,3]}
+    @memoize()
+    def fn(*args, **kwargs):
+        assert tuple(test_args) == args
+        assert test_kwargs == kwargs
+
+    fn(*test_args, **test_kwargs)
