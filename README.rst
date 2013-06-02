@@ -11,8 +11,10 @@ Memoize
 -------
 Add a cache to a function such that multiple calls with the same args
 will return cached results.  Supports an optional cache timeout which
-will flush itmes from the cache after a set interval for recomputation.
+will flush itmes from the cache after a set interval for
+recomputation.
 
+::
     from wraptor.decorators import memoize
 
     @memoize()
@@ -28,6 +30,7 @@ will flush itmes from the cache after a set interval for recomputation.
 
 Supports timeouts!
 
+::
     @memoize(timeout=.5)
     def foo(bar, baz):
         print(bar, baz)
@@ -49,6 +52,7 @@ Throttle a function to firing at most 1 time per interval.  The function
 is fired on the forward edge (meaning it will fire the first time you
 call it).
 
+::
     from wraptor.decorators import throttle
     import time
 
@@ -73,6 +77,7 @@ decorator in sub-threads).
 
 The timeout value must be a positive integer.
 
+::
     from wraptor.decorators import timeout, TimeoutException
     import time
 
@@ -88,6 +93,7 @@ The timeout value must be a positive integer.
 
 You can also catch the timeout exception from inside the function:
 
+::
     @timeout(1)
     def heavy_workload():
         try:
