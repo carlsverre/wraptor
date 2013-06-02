@@ -7,9 +7,10 @@ class TimeoutException(Exception):
 class timeout():
     """ Basic timeout decorator
         * Uses signals, so this can only be used in the main thread of execution
+        * seconds must be a positive integer
         Signal implementation based on http://code.activestate.com/recipes/307871-timing-out-function/
     """
-    def __init__(self, seconds):
+    def __init__(self, seconds=1):
         self.seconds = seconds
 
     def __call__(self, fn):

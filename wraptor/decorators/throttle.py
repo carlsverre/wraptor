@@ -5,7 +5,7 @@ class throttle():
     """ Throttle a function to execute at most 1 time per <seconds> seconds
         The function is executed on the forward edge.
     """
-    def __init__(self, seconds):
+    def __init__(self, seconds=1):
         self.seconds = seconds
         self.last_run = 0
 
