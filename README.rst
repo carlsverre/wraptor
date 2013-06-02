@@ -14,7 +14,8 @@ will return cached results.  Supports an optional cache timeout which
 will flush itmes from the cache after a set interval for
 recomputation.
 
-::
+.. code:: python
+
     from wraptor.decorators import memoize
 
     @memoize()
@@ -30,7 +31,8 @@ recomputation.
 
 Supports timeouts!
 
-::
+.. code:: python
+
     @memoize(timeout=.5)
     def foo(bar, baz):
         print(bar, baz)
@@ -52,7 +54,8 @@ Throttle a function to firing at most 1 time per interval.  The function
 is fired on the forward edge (meaning it will fire the first time you
 call it).
 
-::
+.. code:: python
+
     from wraptor.decorators import throttle
     import time
 
@@ -77,7 +80,8 @@ decorator in sub-threads).
 
 The timeout value must be a positive integer.
 
-::
+.. code:: python
+
     from wraptor.decorators import timeout, TimeoutException
     import time
 
@@ -93,7 +97,8 @@ The timeout value must be a positive integer.
 
 You can also catch the timeout exception from inside the function:
 
-::
+.. code:: python
+
     @timeout(1)
     def heavy_workload():
         try:
