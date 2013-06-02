@@ -20,7 +20,7 @@ class PyTest(TestCommand):
 
 setup(
     name='Wraptor',
-    version='0.1.0',
+    version=__version__,
     author='Carl Sverre',
     author_email='carl@carlsverre.com',
     packages=['wraptor', 'wraptor.test', 'wraptor.decorators', 'wraptor.decorators.test'],
