@@ -12,6 +12,17 @@ def test_basic():
             pass
     fn()
 
+def test_catch_exception_outsize():
+    @timeout(1)
+    def fn():
+        time.sleep(2)
+        assert False
+
+    try:
+        fn()
+    except TimeoutException:
+        pass
+
 def test_cancels_signal():
     @timeout(1)
     def fn():
