@@ -114,3 +114,49 @@ You can also catch the timeout exception from inside the function:
             time.sleep(10)
         except TimeoutException:
             print('workload timed out')
+
+Context Managers
+================
+
+Throttle
+--------
+Throttle a with statement to executing its body at most 1 time per
+interval.  The body is fired on the forward edge (meaning it will
+fire the first time you call it).
+
+.. code:: python
+
+    from wraptor.context import throttle
+    import time
+
+    throttler = throttle(seconds=3)
+
+    def foo():
+        with throttler:
+            print 'bar'
+
+    foo()
+    # prints bar
+    sleep(2)
+    foo()
+    # does nothing
+    sleep(2)
+    foo()
+    # prints bar
+
+Maybe
+-----
+Execute a with block based on the results of a predicate.
+
+.. code:: python
+
+    from wraptor.context import maybe
+
+    def foo(cond):
+        with maybe(lambda: cond == 5):
+            print 'bar'
+
+    foo(5)
+    # prints bar
+    foo(3)
+    # does nothing
