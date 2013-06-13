@@ -1,4 +1,5 @@
 from functools import wraps
+from wraptor import context
 import time
 
 class throttle():
@@ -6,14 +7,11 @@ class throttle():
         The function is executed on the forward edge.
     """
     def __init__(self, seconds=1):
-        self.seconds = seconds
-        self.last_run = 0
+        self.throttler = context.throttle(seconds=seconds)
 
     def __call__(self, fn):
         @wraps(fn)
         def wrapped(*args, **kwargs):
-            now = time.time()
-            if now > self.last_run + self.seconds:
-                self.last_run = now
+            with self.throttler:
                 return fn(*args, **kwargs)
         return wrapped
