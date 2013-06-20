@@ -2,7 +2,7 @@ from functools import wraps
 from wraptor import context
 import time
 
-class throttle():
+class throttle(object):
     """ Throttle a function to execute at most 1 time per <seconds> seconds
         The function is executed on the forward edge.
     """

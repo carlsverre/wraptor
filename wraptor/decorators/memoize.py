@@ -3,7 +3,7 @@ import time
 from hashlib import md5
 import threading
 
-class memoize():
+class memoize(object):
     """ Memoize the results of a function.  Supports an optional timeout
         for automatic cache expiration.
 

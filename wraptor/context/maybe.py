@@ -4,7 +4,7 @@ import inspect
 class _SkippedBlock(Exception):
     pass
 
-class maybe():
+class maybe(object):
     def __init__(self, predicate):
         self.predicate = predicate
 

@@ -4,7 +4,7 @@ import signal
 class TimeoutException(Exception):
     pass
 
-class timeout():
+class timeout(object):
     """ Basic timeout decorator
         * Uses signals, so this can only be used in the main thread of execution
         * seconds must be a positive integer
