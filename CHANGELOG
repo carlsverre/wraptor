@@ -1,15 +1,15 @@
 2013-06-20 Version 0.3.1
 
-    * Minor change to class declarations.  Enforce new style python classes.
+	* Minor change to class declarations.  Enforce new style python classes.
 
 2013-06-12 Version 0.3.0
 
-    * Initial release of context managers
+	* Initial release of context managers
 
 2013-06-01 Version 0.2.0
 
-    * Initial release of decorators
+	* Initial release of decorators
 
 2013-06-01 Version 0.1.0
 
-    * Initial release
+	* Initial release
