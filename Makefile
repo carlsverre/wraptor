@@ -7,7 +7,7 @@ upload: all
 clean:
 	rm -rf *.egg Wraptor.egg-info dist build
 	find . -iname "*.pyc" -exec rm {} \;
-	find . -iname "__pycache__" -exec rm -r {} \;
+	find . -iname "__pycache__" -exec rm -rf {} \;
 	python setup.py clean --all
 
 test:
