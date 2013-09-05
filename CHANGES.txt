@@ -1,4 +1,0 @@
-v0.1.0, 2013-06-01 -- Initial release.
-v0.2.0, 2013-06-01 -- Initial release of decorators.
-v0.3.0, 2013-06-12 -- Initial release of context managers.
-v0.3.1, 2013-06-20 -- Minor change to class declarations.  Enforce new style python classes.
