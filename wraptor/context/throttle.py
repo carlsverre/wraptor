@@ -1,5 +1,4 @@
 import time
-import sys
 from wraptor.context import maybe
 
 class throttle(maybe):

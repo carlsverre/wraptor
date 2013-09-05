@@ -1,4 +1,5 @@
-#!env python
+#!/usr/bin/env python
+# flake8: noqa
 
 from distutils.core import setup
 from setuptools.command.test import test as TestCommand

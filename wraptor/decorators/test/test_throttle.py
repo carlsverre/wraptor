@@ -14,4 +14,4 @@ def test_basic():
     time.sleep(.2)
     test()
 
-    assert arr == [1,1]
+    assert arr == [1, 1]

@@ -21,14 +21,14 @@ def test_basic_args():
     def fn(*args, **kwargs):
         arr.append(1)
 
-    s_args = [1,2,3]
+    s_args = [1, 2, 3]
     fn(*s_args)
     fn(*s_args)
     c_args = [[1], "asdjf", {'a': 5}]
     fn(*c_args)
     fn(*c_args)
-    kw_args = {'a': 234, 'b': [1,2,"asdf"], 'c': [5,6]}
-    kw_args_2 = {'a': 234, 'b': [1,3,"asdf"], 'c': [5,6]}
+    kw_args = {'a': 234, 'b': [1, 2, "asdf"], 'c': [5, 6]}
+    kw_args_2 = {'a': 234, 'b': [1, 3, "asdf"], 'c': [5, 6]}
     fn(*c_args, **kw_args)
     fn(*c_args, **kw_args_2)
     fn(*c_args, **kw_args)
@@ -45,9 +45,9 @@ def test_timeout():
     def fn(*args, **kwargs):
         arr.append(1)
 
-    fn(1,2,3)
+    fn(1, 2, 3)
     time.sleep(.2)
-    fn(1,2,3)
+    fn(1, 2, 3)
 
     assert arr == [1, 1]
 
@@ -58,10 +58,10 @@ def test_auto_flush():
     def fn(*args, **kwargs):
         pass
 
-    fn(1,2,3)
+    fn(1, 2, 3)
     assert len(memoize_inst.cache.keys()) == 1
     time.sleep(.2)
-    fn(1,2,3)
+    fn(1, 2, 3)
     assert len(memoize_inst.cache.keys()) == 1
 
 def test_manual_flush():
@@ -71,10 +71,10 @@ def test_manual_flush():
     def fn(*args, **kwargs):
         pass
 
-    fn(1,2,3)
+    fn(1, 2, 3)
     assert len(memoize_inst.cache.keys()) == 1
     time.sleep(.2)
-    fn(3,4,5)
+    fn(3, 4, 5)
     assert len(memoize_inst.cache.keys()) == 2
     time.sleep(.2)
     fn.flush_cache()

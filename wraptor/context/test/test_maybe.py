@@ -1,4 +1,3 @@
-import time
 from threading import Thread
 
 from wraptor.context import maybe
@@ -10,7 +9,7 @@ def test_basic():
     check = False
     with maybe(lambda: True):
         check = True
-    assert True
+    assert check
 
 def test_threads():
     def worker(arr, index):
@@ -23,6 +22,5 @@ def test_threads():
     threads = [Thread(target=worker, args=(arr, i)) for i in range(workers)]
     [t.start() for t in threads]
     [t.join() for t in threads]
-    
-    assert all(arr)
 
+    assert all(arr)

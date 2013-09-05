@@ -14,4 +14,4 @@ def test_basic():
     with t:
         arr.append(1)
 
-    assert arr == [1,1]
+    assert arr == [1, 1]

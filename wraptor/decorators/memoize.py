@@ -36,12 +36,12 @@ class memoize(object):
             with self.cache_lock:
                 try:
                     result, cache_time = self.cache[key]
-                    if self.timeout != None and (time.time() - cache_time) > self.timeout:
+                    if self.timeout is not None and (time.time() - cache_time) > self.timeout:
                         raise KeyError
                 except KeyError:
                     result, _ = self.cache[key] = (fn(*args, **kwargs), time.time())
 
-            if not self.manual_flush and self.timeout != None:
+            if not self.manual_flush and self.timeout is not None:
                 flush_cache()
 
             return result
@@ -50,4 +50,3 @@ class memoize(object):
             wrapped.flush_cache = flush_cache
 
         return wrapped
-
