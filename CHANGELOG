@@ -1,3 +1,7 @@
+2013-07-06 Version 0.4.0
+
+	* Memoize now supports being attached to an instance method
+
 2013-06-20 Version 0.3.1
 
 	* Minor change to class declarations.  Enforce new style python classes.

@@ -79,3 +79,31 @@ def test_manual_flush():
     time.sleep(.2)
     fn.flush_cache()
     assert len(memoize_inst.cache.keys()) == 0
+
+def test_class_method():
+    import random
+
+    memoizer = memoize(manual_flush=True, instance_method=True)
+
+    class foo(object):
+        @memoizer
+        def bar(self, *args):
+            return random.random()
+
+    x = foo()
+    x2 = foo()
+
+    assert x.bar('a', 'b') != x2.bar('a', 'b')
+    assert x.bar('a', 'b') == x.bar('a', 'b')
+    assert x.bar('a', 'b') != x.bar('a', 'd')
+    assert x2.bar('a', 'b') == x2.bar('a', 'b')
+
+    # the memoizer should have made private caches for each instance
+    assert len(memoizer.cache) == 0
+
+    # now make sure that they don't share caches
+    res1 = x.bar('a', 'b')
+    res2 = x2.bar('a', 'b')
+    x.bar.flush_cache()
+    assert res1 != x.bar('a', 'b')
+    assert res2 == x2.bar('a', 'b')

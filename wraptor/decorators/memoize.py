@@ -11,15 +11,32 @@ class memoize(object):
         "flush_cache" will be added to the wrapped function.  When
         called, it will remove all the timed out values from the cache.
 
+        If you use this decorator as a class method, you must specify
+        instance_method=True otherwise you will have a single shared
+        cache for every instance of your class.
+
         This decorator is thread safe.
     """
-    def __init__(self, timeout=None, manual_flush=False):
+    def __init__(self, timeout=None, manual_flush=False, instance_method=False):
         self.timeout = timeout
-        self.cache = {}
         self.manual_flush = manual_flush
+        self.instance_method = instance_method
+        self.cache = {}
         self.cache_lock = threading.RLock()
 
     def __call__(self, fn):
+        if self.instance_method:
+            @wraps(fn)
+            def rewrite_instance_method(instance, *args, **kwargs):
+                # the first time we are called we overwrite the method
+                # on the class instance with a new memoize instance
+                if hasattr(instance, fn.__name__):
+                    new_memoizer = memoize(self.timeout, self.manual_flush)(fn)
+                    setattr(instance, fn.__name__, new_memoizer)
+                    return new_memoizer(instance, *args, **kwargs)
+
+            return rewrite_instance_method
+
         def flush_cache():
             with self.cache_lock:
                 for key in self.cache.keys():

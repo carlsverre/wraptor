@@ -19,7 +19,7 @@ Memoize
 -------
 Add a cache to a function such that multiple calls with the same args
 will return cached results.  Supports an optional cache timeout which
-will flush itmes from the cache after a set interval for
+will flush items from the cache after a set interval for
 recomputation.
 
 .. code:: python
@@ -55,6 +55,21 @@ Supports timeouts!
 
     foo(1, 2)
     # prints (1, 2)
+
+Supports attaching to an instance method!
+
+.. code:: python
+
+    class foo(object):
+        @memoize(instance_method=True)
+        def bar(self, a, b):
+            return random()
+
+    f = foo()
+    f2 = foo()
+
+    # they don't share a cache!
+    f.bar(1,2) != f2.bar(1,2)
 
 Throttle
 --------
