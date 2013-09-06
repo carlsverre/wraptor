@@ -49,5 +49,6 @@ setup(
         'wraptor.context',
         'wraptor.context.test',
     ],
+    tests_require=['pytest'],
     cmdclass={ 'test': PyTest },
 )
