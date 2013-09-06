@@ -1,12 +1,10 @@
 #!/usr/bin/env python
-# flake8: noqa
 
 from distutils.core import setup
 from setuptools.command.test import test as TestCommand
 
 # get version
-with open('wraptor/__init__.py') as f:
-    exec(f.read())
+from wraptor import __version__
 
 class PyTest(TestCommand):
     user_options = [
