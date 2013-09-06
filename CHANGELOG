@@ -1,3 +1,8 @@
+2013-07-06 Version 0.4.1
+
+	* Fixed a small bug in memoize (only when using
+	instance_method=True)
+
 2013-07-06 Version 0.4.0
 
 	* Memoize now supports being attached to an instance method
