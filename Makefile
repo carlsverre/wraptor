@@ -2,12 +2,12 @@ all: clean
 	rm -rf build/ dist; python setup.py sdist
 
 upload: all
-	python setup.py upload
+	python setup.py sdist upload
 
 clean:
 	rm -rf *.egg Wraptor.egg-info dist build
-	find . -iname "*.pyc" -exec rm {} \;
-	find . -iname "__pycache__" -exec rm -rf {} \;
+	find . -type f -name "*.pyc" -exec rm {} \;
+	find . -name "__pycache__" -print0 | xargs -0 rmdir
 	python setup.py clean --all
 
 test:
