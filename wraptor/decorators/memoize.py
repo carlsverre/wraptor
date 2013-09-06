@@ -31,9 +31,10 @@ class memoize(object):
                 # the first time we are called we overwrite the method
                 # on the class instance with a new memoize instance
                 if hasattr(instance, fn.__name__):
-                    new_memoizer = memoize(self.timeout, self.manual_flush)(fn)
+                    bound_fn = fn.__get__(instance, instance.__class__)
+                    new_memoizer = memoize(self.timeout, self.manual_flush)(bound_fn)
                     setattr(instance, fn.__name__, new_memoizer)
-                    return new_memoizer(instance, *args, **kwargs)
+                    return getattr(instance, fn.__name__)(*args, **kwargs)
 
             return rewrite_instance_method
 

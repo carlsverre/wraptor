@@ -107,3 +107,19 @@ def test_class_method():
     x.bar.flush_cache()
     assert res1 != x.bar('a', 'b')
     assert res2 == x2.bar('a', 'b')
+
+def test_instance_method_extended():
+
+    class foo(object):
+        def __init__(self):
+            self.i = 0
+
+        @memoize(instance_method=True)
+        def bar(self, instance):
+            assert self == instance
+            self.i += 1
+            return self.i
+
+    f = foo()
+    assert f.bar(f) == 1
+    assert f.bar(f) == 1
