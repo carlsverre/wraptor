@@ -1,6 +1,7 @@
 2013-07-06 Version 0.4.0
 
 	* Memoize now supports being attached to an instance method
+	* Added timer context manager, to help time various blocks of code
 
 2013-06-20 Version 0.3.1
 

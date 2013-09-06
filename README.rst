@@ -175,3 +175,19 @@ Execute a with block based on the results of a predicate.
     # prints bar
     foo(3)
     # does nothing
+
+Timer
+-----
+Time a block of code.
+
+.. code:: python
+
+    from wraptor.context import timer
+
+    def foo(cond):
+        with timer('my slow method') as t:
+            expensive_stuff()
+        print t
+
+    foo()
+    # prints "my slow method took 435.694 ms"
