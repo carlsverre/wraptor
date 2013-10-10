@@ -1,3 +1,7 @@
+2013-10-09 Version 0.5.0
+
+	* Throttle now supports being attached to an instance method
+
 2013-07-06 Version 0.4.1
 
 	* Fixed a small bug in memoize (only when using
