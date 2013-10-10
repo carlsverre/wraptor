@@ -123,3 +123,25 @@ def test_instance_method_extended():
     f = foo()
     assert f.bar(f) == 1
     assert f.bar(f) == 1
+
+def test_fail_instance_method():
+    """ Test that memoize without instance_method creates a globally
+        shared memoize instance (shared by all instances of the class)
+    """
+    memoizer = memoize(manual_flush=True)
+
+    class foo(object):
+        def __init__(self, x):
+            self._x = x
+
+        @memoizer
+        def bar(self):
+            return self._x
+
+    x = foo(1)
+    x2 = foo(2)
+
+    assert x.bar() != x2.bar()
+
+    # note that they share the same cache
+    assert len(memoizer.cache) == 2
