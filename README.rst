@@ -93,6 +93,27 @@ call it).
     time.sleep(1)
     foo(5, 6)
     # prints (1, 2)
+    
+Supports attaching to an instance method!
+
+.. code:: python
+
+    arr = []
+
+    class foo(object):
+        @throttle(1, instance_method=True)
+        def bar(self):
+            arr.append(1)
+
+    x = foo()
+    x2 = foo()
+
+    x.bar()
+    x2.bar()
+    
+    # they don't share the same throttle!
+    assert arr == [1, 1]
+
 
 Timeout
 -------
