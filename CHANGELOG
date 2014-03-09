@@ -1,3 +1,7 @@
+2014-03-09 Version 0.6.0
+
+	* Added exception_catcher decorator
+
 2013-10-09 Version 0.5.0
 
 	* Throttle now supports being attached to an instance method
