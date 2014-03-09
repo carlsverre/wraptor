@@ -151,6 +151,28 @@ You can also catch the timeout exception from inside the function:
         except TimeoutException:
             print('workload timed out')
 
+Exception Catcher
+-----------------
+`exception_catcher` is a helpful method for dealing with threads that
+may raise an exception.  It is especially useful for testing.
+
+.. code:: python
+
+    from wraptor.decorators import exception_catcher
+
+    @exception_catcher
+    def work():
+        raise Exception()
+
+    t = threading.Thread(target=work)
+    t.start()
+    t.join()
+
+    try:
+        work.check()
+    except Exception as e:
+        print e
+
 Context Managers
 ================
 
