@@ -15,12 +15,12 @@ clean:
 
 .PHONY: test
 test: venv
-	source venv/bin/activate && pytest
+	. venv/bin/activate && pytest
 
 .PHONY: flake8
 flake8:
-	source venv/bin/activate && flake8 --config=.flake8 .
+	. venv/bin/activate && flake8 --config=.flake8 .
 
 venv: dev_requirements.txt
 	test -d venv || virtualenv venv
-	source venv/bin/activate && pip install -r dev_requirements.txt
+	. venv/bin/activate && pip install -r dev_requirements.txt
