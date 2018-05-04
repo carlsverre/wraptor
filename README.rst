@@ -10,7 +10,7 @@ Testing
 .. image:: https://travis-ci.org/carlsverre/wraptor.png
     :target: https://travis-ci.org/carlsverre/wraptor
 
-Run tests by executing :code:`python setup.py test`.
+Run tests by executing :code:`make test`.
 
 Decorators
 ==========
