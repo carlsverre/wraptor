@@ -3,8 +3,8 @@ all: clean
 	rm -rf build/ dist; python setup.py sdist
 
 .PHONY: upload
-upload: all
-	python setup.py sdist upload
+upload: all venv
+	. venv/bin/activate && twine upload dist/*
 
 .PHONY: clean
 clean:
