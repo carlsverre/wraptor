@@ -4,4 +4,4 @@ Provides a set of useful decorators and other wrap-like python utility functions
 
 """
 
-__version__ = "0.6.0"
+__version__ = "0.7.0"

@@ -1,3 +1,8 @@
+2018-05-04 Version 0.7.0
+
+    * Throttle now supports signaling whether or not it ran, rather than
+      returning the wrapped function's return value. Contributed by @evictor
+
 2014-03-09 Version 0.6.0
 
 	* Added exception_catcher decorator
