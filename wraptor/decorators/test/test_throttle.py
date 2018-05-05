@@ -24,6 +24,14 @@ def test_forwards_return_val():
     assert test() is 'foo'
     assert test() is None, 'return None when throttled'
 
+def test_return_throttle_result():
+    @throttle(.1, return_throttle_result=True)
+    def test():
+        return 'foo'
+
+    assert test() is True
+    assert test() is False, 'throttled'
+
 def test_fail_instance_method():
     """ Test that throttle without instance_method creates a globally
         shared throttle instance (shared by all instances of the class)

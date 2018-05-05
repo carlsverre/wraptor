@@ -114,6 +114,19 @@ Supports attaching to an instance method!
     # they don't share the same throttle!
     assert arr == [1, 1]
 
+By default throttle passes through the return value of the wrapped def if
+it was called, or None if the def was not called. Use
+`return_throttle_result=True` to instead return a `bool`:
+
+.. code:: python
+
+    @throttle(1, return_throttle_result=True)
+    def foo():
+        pass
+
+    assert foo() is True, 'True means "called"'
+    assert foo() is False, 'False means "not called" (throttled)'
+
 
 Timeout
 -------
