@@ -114,8 +114,8 @@ Supports attaching to an instance method!
     # they don't share the same throttle!
     assert arr == [1, 1]
 
-By default throttle passes through the return value of the wrapped def if
-it was called, or None if the def was not called. Use
+By default throttle passes through the return value of the wrapped
+function if it was called, or None if the def was not called. Use
 `return_throttle_result=True` to instead return a `bool`:
 
 .. code:: python
